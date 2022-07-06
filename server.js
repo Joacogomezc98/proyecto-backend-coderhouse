@@ -53,11 +53,12 @@ passport.use(new LocalStrategy(
             .then((data) => { return data })
 
         if (!existeUsuario) {
-            logger.error('Usuario no encontrado')
-            loggerFile.error('Usuario no encontrado')
+            logger.error('User not found')
+            loggerFile.error('User not found')
             return done(null, false);
         } else if (!(await verifyPass(existeUsuario, password))) {
-            console.log('Contraseña invalida')
+            logger.error('Invalid Password')
+            loggerFile.error('Invalid Password')
             console.log(await verifyPass(existeUsuario, password))
             return done(null, false);
         } else {
@@ -109,7 +110,8 @@ const createHash = async (password) => {
         const hash = await bcrypt.hash(password, salt)
         return hash
     } catch (err) {
-        console.log(err)
+        logger.error(err)
+        loggerFile.error(err)
     }
 }
 
