@@ -1,0 +1,39 @@
+[2022-07-13T20:46:35.858] [ERROR] file - Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection.login (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:438:38)
+    at C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-transport\index.js:271:32
+    at SMTPConnection.<anonymous> (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:209:17)
+    at Object.onceWrapper (events.js:421:28)
+    at SMTPConnection.emit (events.js:315:20)
+    at SMTPConnection._actionEHLO (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:1319:14)
+    at SMTPConnection._processResponse (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:189:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+[2022-07-13T20:46:57.132] [ERROR] file - {
+  _id: new ObjectId("62cf595a57db6c67d9767403"),
+  username: 'joaquin@gomez',
+  password: '$2b$10$dApWh8QtZEYt.8JsLZt2CuW.qwWRj67xlneS2QZt5XRmqN34t/Hma',
+  name: 'joaquin',
+  address: 'Florida',
+  age: 55,
+  phoneNumber: '01167357319',
+  imgUrl: 'asdasdasd',
+  __v: 0
+} already exists as a user
+[2022-07-13T20:48:47.020] [ERROR] file - Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection.login (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:438:38)
+    at C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-transport\index.js:271:32
+    at SMTPConnection.<anonymous> (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:209:17)
+    at Object.onceWrapper (events.js:421:28)
+    at SMTPConnection.emit (events.js:315:20)
+    at SMTPConnection._actionEHLO (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:1319:14)
+    at SMTPConnection._processResponse (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:189:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
