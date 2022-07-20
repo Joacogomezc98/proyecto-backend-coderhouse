@@ -37,3 +37,35 @@
   code: 'EAUTH',
   command: 'API'
 }
+[2022-07-14T12:54:14.212] [ERROR] file - User not found
+[2022-07-14T12:54:14.228] [ERROR] file - Login error!
+[2022-07-14T12:54:21.597] [ERROR] file - User not found
+[2022-07-14T12:54:21.603] [ERROR] file - Login error!
+[2022-07-14T12:54:42.342] [ERROR] file - Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection.login (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:438:38)
+    at C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-transport\index.js:271:32
+    at SMTPConnection.<anonymous> (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:209:17)
+    at Object.onceWrapper (events.js:421:28)
+    at SMTPConnection.emit (events.js:315:20)
+    at SMTPConnection._actionEHLO (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:1319:14)
+    at SMTPConnection._processResponse (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:189:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+[2022-07-20T01:33:47.163] [ERROR] file - Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection.login (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:438:38)
+    at C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-transport\index.js:271:32
+    at SMTPConnection.<anonymous> (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:209:17)
+    at Object.onceWrapper (events.js:421:28)
+    at SMTPConnection.emit (events.js:315:20)
+    at SMTPConnection._actionEHLO (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:1319:14)
+    at SMTPConnection._processResponse (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (C:\Users\JoaquinCodino\Desktop\Personal\CoderHouse\Proyecto Final\ProyectoFinal-GomezCodino\node_modules\nodemailer\lib\smtp-connection\index.js:189:44) {
+  code: 'EAUTH',
+  command: 'API'
+}

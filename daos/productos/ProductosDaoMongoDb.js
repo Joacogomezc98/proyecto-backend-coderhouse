@@ -1,9 +1,17 @@
 import ContenedorMongo from '../../contenedores/contenedorMongoDb.js'
 import ProductosSchema from '../../schemas/productosSchema.js'
 
+let instance = null
 class ProductosMongo extends ContenedorMongo {
     constructor(){
         super('productos', ProductosSchema)
+     }
+
+     static getInstance(){
+        if(!instance){
+            instance = new ProductosMongo()
+        }
+        return instance
      }
 
      async modifyProduct(modProduct, id) {

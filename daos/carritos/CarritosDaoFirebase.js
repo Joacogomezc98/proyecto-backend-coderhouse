@@ -1,10 +1,19 @@
 import ContenedorFirebase from  "../../contenedores/contenedorFirebase.js"
 import {FieldValue} from 'firebase-admin/firestore'
 
+let instance = null
 class CarritosFirebase extends ContenedorFirebase {
     constructor(){
        super('carritos')
     }
+
+     static getInstance(){
+        if(!instance){
+            instance = new CarritosFirebase()
+        }
+        return instance
+     }
+
 
      async deleteProduct(cartID, prodID){
         try {
