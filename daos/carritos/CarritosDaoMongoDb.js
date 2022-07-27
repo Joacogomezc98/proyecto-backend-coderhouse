@@ -1,6 +1,7 @@
 import ContenedorMongo from "../../contenedores/contenedorMongoDb.js"
 import CarritosSchema from "../../schemas/carritosSchema.js"
 
+let instance = null
 class CarritosMongo extends ContenedorMongo {
     constructor(){
         super("carritos", CarritosSchema)
@@ -14,6 +15,14 @@ class CarritosMongo extends ContenedorMongo {
              console.log(e)
          }
      }
+
+     static getInstance(){
+        if(!instance){
+            instance = new CarritosMongo()
+        }
+        return instance
+     }
+
 
      async deleteProduct(cartID, prodID){
          try{

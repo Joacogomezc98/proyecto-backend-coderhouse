@@ -1,27 +1,12 @@
-import ProductosFirebase from "./productos/ProductosDaoFirebase.js";
-import ProductosMongo from "./productos/ProductosDaoMongoDb.js";
-import CarritosFirebase from "./carritos/CarritosDaoFirebase.js";
-import CarritosMongo from "./carritos/CarritosDaoMongoDb.js";
 import configs from "../configs.js";
-import UsersMongo from "./users/usersDaoMongoDb.js";
+import Factory from "../factory/factory.js";
 
 const db = configs.db
 
-let productosApi
-let carritoApi
-let usersApi
+let factory = Factory.getInstance()
 
-switch (db) {
-    case 'mongodb':
-        productosApi = new ProductosMongo()
-        carritoApi = new CarritosMongo()
-        usersApi = new UsersMongo()
-        break
-
-    case 'firebase':
-        productosApi = new ProductosFirebase()
-        carritoApi = new CarritosFirebase()
-        break
-}
+let productosApi = factory.create(db, 'Productos')
+let carritoApi = factory.create(db, 'Carritos')
+let usersApi = factory.create(db, 'Usuarios')
 
 export {productosApi, carritoApi, usersApi}

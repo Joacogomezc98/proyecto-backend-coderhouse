@@ -1,9 +1,18 @@
 import ContenedorFirebase from "../../contenedores/contenedorFirebase.js"
 
+let instance = null
 class ProductosFirebase extends ContenedorFirebase {
     constructor() {
         super('productos')
     }
+
+    static getInstance(){
+        if(!instance){
+            instance = new ProductosFirebase()
+        }
+        return instance
+     }
+
 
     async modifyProduct(modProduct, id) {
         try {
