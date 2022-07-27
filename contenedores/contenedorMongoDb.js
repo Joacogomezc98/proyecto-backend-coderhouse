@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-
+import dotenv from 'dotenv'
+dotenv.config()
 
 export default class ContenedorMongo {
     constructor(collection, schema){
@@ -9,7 +10,7 @@ export default class ContenedorMongo {
 
     async mongoConnect() {
         try{
-            mongoose.connect("mongodb://localhost:27017/mibase",{
+            mongoose.connect(process.env.MONGO_STORE_CREDENTIALS,{
                 useNewUrlParser: true,
                 useUnifiedTopology: true
             })

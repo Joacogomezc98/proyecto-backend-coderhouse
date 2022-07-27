@@ -1,11 +1,11 @@
 {
-  "name": "SegundaEntrega-GomezCodino",
+  "name": "ProyectoFinal-GomezCodino",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha tests/test.js",
     "start": "set NODE_ENV=dev && nodemon server.js"
   },
   "keywords": [],
@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "cluster": "^0.7.7",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
@@ -25,10 +27,12 @@
     "http": "^0.0.1-security",
     "log4js": "^6.6.0",
     "minimist": "^1.2.6",
+    "mocha": "^10.0.0",
     "mongoose": "^6.3.1",
     "nodemailer": "^6.7.6",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "passport-stub": "^1.1.1",
     "twilio": "^3.78.0"
   }
 }
