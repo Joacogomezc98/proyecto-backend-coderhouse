@@ -1,5 +1,6 @@
 import ContenedorMongo from '../../contenedores/contenedorMongoDb.js'
 import ProductosSchema from '../../schemas/productosSchema.js'
+import mongoose from "mongoose";
 
 let instance = null
 class ProductosMongo extends ContenedorMongo {
@@ -16,7 +17,7 @@ class ProductosMongo extends ContenedorMongo {
 
      async modifyProduct(modProduct, id) {
          try{
-             await this.collection.updateOne({"_id": id},{$set: {title: modProduct.title},
+             await this.collection.updateOne({"_id": mongoose.Types.ObjectId(id)},{$set: {title: modProduct.title},
              $set:{price: modProduct.price},
              $set:{thumbnail: modProduct.thumbnail},
              $set:{timestamp: modProduct.timestamp},

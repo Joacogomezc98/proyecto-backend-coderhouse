@@ -14,7 +14,15 @@ import { cartRouter } from "./routes/cart.js";
 import { productsRouter } from "./routes/products.js";
 import { authRouter } from "./routes/auth.js";
 import { logger } from "./helpers/log4js.js";
-
+import { graphqlHTTP } from "express-graphql";
+import { productGraphqlSchema } from "./schemas/graphqlSchema.js";
+import {
+            getProduct,
+            getProducts,
+            createProduct,
+            updateProduct,
+            deleteProduct
+} from './controllers/graphqlController.js'
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -73,11 +81,27 @@ const PORT = configs.port
 
 const MODE = parseArgs(process.argv.slice(2), minimistOptions).mode || 'FORK'
 
+// GRAPHQL CONFIGURATIONS
+app.use(
+    '/graphql',
+    graphqlHTTP({
+        schema: productGraphqlSchema,
+        rootValue:{
+            getProduct,
+            getProducts,
+            createProduct,
+            updateProduct,
+            deleteProduct
+        },
+        graphiql: true
+    })
+)
 app.use('/api/carrito', cartRouter)
 
 app.use('/api/productos', productsRouter)
 
 app.use('/', authRouter)
+
 
 if (MODE === 'CLUSTER' && cluster.isPrimary) {
     logger.info(`Master ${process.pid} is running`);
@@ -95,6 +119,7 @@ if (MODE === 'CLUSTER' && cluster.isPrimary) {
 
 }
 
+//--------------------------------------------------------------------------------------------------------------------
 
 // DB CONNECTIONS
 

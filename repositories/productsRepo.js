@@ -12,9 +12,9 @@ export default class ProductsRepo {
         }
     }
 
-    static getInstance(){
+    static getInstance(db){
         if(!instance){
-            instance = new ProductsRepo()
+            instance = new ProductsRepo(db)
         }
         return instance
      }
