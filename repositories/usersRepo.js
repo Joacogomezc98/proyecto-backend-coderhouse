@@ -29,7 +29,7 @@ export default class UsersRepo {
         return dtos
     }
 
-    async create(){
+    async create(item){
         const dtos = await this.dao.create(item)
         return dtos
     }
