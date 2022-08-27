@@ -2,6 +2,7 @@ import ProductsRepo from "../repositories/productsRepo.js";
 import CarritosRepo from "../repositories/carritosRepo.js";
 import UsersRepo from "../repositories/usersRepo.js"
 import MessagesRepo from "../repositories/messagesRepo.js";
+import OrdersRepo from "../repositories/ordersRepo.js";
 
 let instance = null
 export default class Factory {
@@ -23,6 +24,8 @@ export default class Factory {
                 return UsersRepo.getInstance()
             case 'Mensajes':
                 return MessagesRepo.getInstance()
+            case 'Order':
+                return OrdersRepo.getInstance()
             default:
                 break;
         }

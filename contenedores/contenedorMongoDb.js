@@ -53,7 +53,6 @@ export default class ContenedorMongo {
 
     async create(item){
         try{
-
             const newItem = await this.collection.create(item)
             return newItem
         }catch(e){

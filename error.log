@@ -4,3 +4,27 @@
 [2022-08-24T01:32:48.616] [ERROR] file - Login error!
 [2022-08-24T01:33:37.084] [ERROR] file - Invalid Password
 [2022-08-24T01:33:37.200] [ERROR] file - Login error!
+[2022-08-27T12:04:30.122] [ERROR] file - TypeError: ordersApi.getAll is not a function
+    at createOrder (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/orders.js:7:32)
+    at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:56:17
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-08-27T12:08:09.844] [ERROR] file - TypeError: Cannot read properties of undefined (reading 'map')
+    at cartInfoMail (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/helpers/nodemailer.js:43:42)
+    at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:54:42
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-08-27T12:20:30.499] [ERROR] file - TypeError: Cannot read properties of undefined (reading 'map')
+    at cartInfoMail (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/helpers/nodemailer.js:43:42)
+    at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:54:42
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-08-27T12:22:55.526] [ERROR] file - TypeError: ordersApi.getAll is not a function
+    at createOrder (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/orders.js:7:32)
+    at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:56:17
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-08-27T12:36:03.850] [ERROR] file - TypeError: Cannot read properties of null (reading '_id')
+    at cartInfoMail (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/helpers/nodemailer.js:40:40)
+    at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:53:42
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-08-27T12:36:57.097] [ERROR] file - TypeError: Cannot read properties of null (reading '_id')
+    at cartInfoMail (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/helpers/nodemailer.js:40:40)
+    at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:53:42
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)

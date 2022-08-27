@@ -12,9 +12,9 @@ export default class CarritosRepo {
         }
     }
 
-    static getInstance(){
+    static getInstance(db){
         if(!instance){
-            instance = new CarritosRepo()
+            instance = new CarritosRepo(db)
         }
         return instance
      }
