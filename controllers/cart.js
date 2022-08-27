@@ -1,15 +1,16 @@
-import { carritoApi } from "../daos/index.js";
+import { carritoApi, productosApi } from "../daos/index.js";
 import { cartInfoMail, mailTransporter } from "../helpers/nodemailer.js";
 import { whatsappMessage } from "../helpers/twilio.js";
 import { logger } from "../helpers/log4js.js";
 import { loggerFile } from "../helpers/log4js.js";
 import { loggedUser } from "../middlewares/authValidation.js";
+import { createOrder } from "./orders.js";
 
 // CREA UN CARRITO Y DEVUELVE EL ID
 export const createCart = (req, res) => {
     const newCart = {
         timestamp: new Date(),
-        productos: []
+        products: []
     }
 
     carritoApi.create(newCart)
@@ -35,12 +36,11 @@ export const listCart = (req, res) => {
     const id = req.params.id
 
     carritoApi.getById(id)
-        .then(cart => res.send(cart.productos))
+        .then(cart => res.send(cart.products))
         .catch(err => res.send(err))
 }
 
 //ENVIAR EL CONTENDIO DEL CARRITO POR MAIL Y WHATSAPP
-//TODO: ENVIAR TAMBIEN POR SMS
 //TODO: Agregar validacion
 export const checkoutCart = (req, res) => {
     const id = req.params.id
@@ -52,12 +52,14 @@ export const checkoutCart = (req, res) => {
             try {
                 mailTransporter.sendMail(cartInfoMail({ email, username, cart }))
                 whatsappMessage({email, username, cart})
+                createOrder(cart, email)
             } catch (err) {
                 logger.error(err)
                 loggerFile.error(err)
             }
         })
         .then(() => res.send('Cart checked out'))
+        .then(() => carritoApi.deleteById(id))
 }
 
 //AGREGA UN PRODUCTO AL CARRITO POR ID

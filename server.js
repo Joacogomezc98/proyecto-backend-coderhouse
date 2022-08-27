@@ -14,15 +14,8 @@ import { cartRouter } from "./routes/cart.js";
 import { productsRouter } from "./routes/products.js";
 import { authRouter } from "./routes/auth.js";
 import { logger } from "./helpers/log4js.js";
-import { graphqlHTTP } from "express-graphql";
-import { productGraphqlSchema } from "./schemas/graphqlSchema.js";
-import {
-            getProduct,
-            getProducts,
-            createProduct,
-            updateProduct,
-            deleteProduct
-} from './controllers/graphqlController.js'
+import { Server as IOServer } from 'socket.io'
+import { getMessages, saveMessage } from "./controllers/messages.js";
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -72,30 +65,27 @@ app.set("view engine", "hbs")
 app.set("views", "./views")
 
 //--------------------------------------------------------------------------------------------------------------------
-
-// VARIABLES SERVIDOR
+// SOCKETS CONFIG SECTION ------------------------------------------
 
 const httpServer = new HttpServer(app)
+const io = new IOServer(httpServer)
+
+io.on("connection", (socket) => {
+    logger.info('New user connected to the chat')
+
+    getMessages(socket)
+
+    socket.on('new-message', data => {
+        saveMessage(io, data)
+    })
+})
+// VARIABLES SERVIDOR
+
 
 const PORT = configs.port
 
 const MODE = parseArgs(process.argv.slice(2), minimistOptions).mode || 'FORK'
 
-// GRAPHQL CONFIGURATIONS
-app.use(
-    '/graphql',
-    graphqlHTTP({
-        schema: productGraphqlSchema,
-        rootValue:{
-            getProduct,
-            getProducts,
-            createProduct,
-            updateProduct,
-            deleteProduct
-        },
-        graphiql: true
-    })
-)
 app.use('/api/carrito', cartRouter)
 
 app.use('/api/productos', productsRouter)
@@ -118,6 +108,8 @@ if (MODE === 'CLUSTER' && cluster.isPrimary) {
     httpServer.listen(PORT, logger.info(`Server listenting on PORT: ${PORT}`))
 
 }
+
+
 
 //--------------------------------------------------------------------------------------------------------------------
 
