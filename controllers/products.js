@@ -13,8 +13,7 @@ export const productById = (req, res) => {
             // Verifico que el producto exista
             res.send(idProd)
         })
-        .catch(
-            res.send({ error: "Product not found" })
+        .catch(() => {res.send({ error: "Product not found" })}
         )
 }
 
@@ -72,4 +71,19 @@ export const deleteProduct = (req, res) => {
             })
 
     }
+}
+
+export const filterProducts = (req, res) => {
+    const category = req.params.categoria
+
+    productosApi.getByCategory(category)
+        .then(products => {
+            // Verifico que haya productos
+            if(products.length > 0){
+                res.send(products)
+            }else {
+                res.send({message: 'No products for this category'})
+            }
+        })
+        .catch(() => {res.send({ error: "Oops Something went wrong" })})
 }

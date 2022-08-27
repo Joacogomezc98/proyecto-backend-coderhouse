@@ -36,9 +36,7 @@ export default class ContenedorMongo {
             const item = await this.collection.findOne({'_id': id})
             return item
         }catch(e){
-            console.log(e)
-            const item = false
-            return item
+            throw new Error()
         }
     }
 

@@ -29,6 +29,11 @@ export default class ProductsRepo {
         return dtos
     }
 
+    async getByCategory(category){
+        const dtos = await this.dao.getByCategory(category)
+        return dtos
+    }
+
     async deleteById(id){
         const dtos = await this.dao.deleteById(id)
         return dtos
