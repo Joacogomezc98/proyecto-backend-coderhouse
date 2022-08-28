@@ -3,7 +3,7 @@ import { cartInfoMail, mailTransporter } from "../helpers/nodemailer.js";
 import { whatsappMessage } from "../helpers/twilio.js";
 import { logger } from "../helpers/log4js.js";
 import { loggerFile } from "../helpers/log4js.js";
-import { loggedUser } from "../middlewares/authValidation.js";
+import { isAuth, loggedUser } from "../middlewares/authValidation.js";
 import { createOrder } from "./orders.js";
 
 // CREA UN CARRITO Y DEVUELVE EL ID

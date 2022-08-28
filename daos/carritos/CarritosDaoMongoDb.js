@@ -1,5 +1,7 @@
 import ContenedorMongo from "../../contenedores/contenedorMongoDb.js"
 import CarritosSchema from "../../schemas/carritosSchema.js"
+import mongoose from "mongoose";
+
 
 let instance = null
 class CarritosMongo extends ContenedorMongo {
@@ -28,7 +30,7 @@ class CarritosMongo extends ContenedorMongo {
      //ELIMINA UN PRODUCTO DEL CARRITO
      async deleteProduct(cartID, prodID){
          try{
-             const deletedCart = await this.collection.findOneAndUpdate({"_id": cartID},{$pull: {"products":{"_id": prodID}}})
+             const deletedCart = await this.collection.findOneAndUpdate({"_id": cartID},{$pull: {products:{"_id": mongoose.Types.ObjectId(prodID)}}},{ safe: true, multi: false })
              return deletedCart
          }catch(e){
              console.log(e)

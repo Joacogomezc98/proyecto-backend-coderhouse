@@ -41,6 +41,8 @@ export const upadteProduct = (req, res) => {
 
     const administrador = modProduct.admin
 
+    modProduct.timestamp = new Date()
+
     if (!administrador) {
         res.send({ error: "Request not authorized" })
 

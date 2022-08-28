@@ -19,13 +19,7 @@ class ProductosMongo extends ContenedorMongo {
     // MODIFICA EL PRODUCTO
     async modifyProduct(modProduct, id) {
         try {
-            await this.collection.updateOne({ "_id": mongoose.Types.ObjectId(id) }, {
-                $set: { title: modProduct.title },
-                $set: { price: modProduct.price },
-                $set: { thumbnail: modProduct.thumbnail },
-                $set: { timestamp: modProduct.timestamp },
-                $set: { stock: modProduct.stock }
-            })
+            await this.collection.findOneAndUpdate({ "_id": mongoose.Types.ObjectId(id) },modProduct)
             return ("Product Edited Successfully")
         } catch (e) {
             console.log(e)

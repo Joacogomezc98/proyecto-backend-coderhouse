@@ -14,8 +14,8 @@ cartRouter.delete('/:id', emptyCart )
 // LISTAR TODOS LOS PRODUCTOS GUARDADOS EN EL CARRITO
 cartRouter.get("/:id/productos", isAuth, listCart)
 
-//ENVIA POR MAIL Y WHATSAPP EL CONTENDIO DEL CARRITO
-cartRouter.post('/checkout/:id', checkoutCart)
+//ENVIA POR MAIL EL CONTENDIO DEL CARRITO
+cartRouter.post('/checkout/:id' ,checkoutCart)
 
 //AGREGAR UN PRODUCTO AL CARRITO POR SU ID
 cartRouter.post("/:id/productos", addToCart)
