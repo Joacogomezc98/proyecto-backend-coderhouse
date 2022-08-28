@@ -14,6 +14,15 @@ class MessagesMongo extends ContenedorMongo {
         return instance
     }
 
+    async getMessagesById(email){
+        try{
+            const messages = await this.collection.find({"author.email": email})
+            return messages
+        } catch(err) {
+            throw new Error()
+        }
+    } 
+
 }
 
 export default MessagesMongo

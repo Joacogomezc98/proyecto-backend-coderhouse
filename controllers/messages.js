@@ -20,3 +20,20 @@ export const saveMessage = (io, data) => {
         })
         .catch((err) => console.log(err))
 }
+
+export const getMessagesById = (req, res) => {
+
+    const email = req.params.email
+
+    messagesApi.getMessagesById(email)
+    .then((mensajes) => {
+        res.send(mensajes)
+    })
+    .catch(() => console.log('Sorry, the messages were not received :('))
+
+
+}
+
+export const renderMessages = (req, res) => {
+    res.render('chat')
+}

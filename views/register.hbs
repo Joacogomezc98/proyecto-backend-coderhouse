@@ -1,5 +1,6 @@
 <div class="container my-5">
     <div class="jumbotron">
+      
 
       <h1>REGISTER</h1>
       <br>
@@ -11,6 +12,10 @@
 
         <div class="form-group">
           <input id="password" name='password' placeholder="password" class="form-control" type="password" required>
+        </div>
+
+        <div class="form-group">
+          <input id="confirm-password" name='confirm-password' placeholder="confirm-password" class="form-control" type="password" required>
         </div>
 
         <div class="form-group">
@@ -37,7 +42,7 @@
 
 
         <div class="form-group">
-          <input class="btn btn-success my-3" type="submit" value="Register">
+          <input class="btn btn-success my-3" type="submit" value="Register" onclick="return Validate()">
         </div>
       </form>
 
@@ -49,3 +54,14 @@
 
     </div>
 </div>
+<script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirm-password").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
+</script>

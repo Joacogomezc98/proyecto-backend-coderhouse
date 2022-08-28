@@ -24,4 +24,9 @@ export default class MessagesRepo {
         return dtos
     }
 
+    async getMessagesById(email){
+        const dtos = await this.dao.getMessagesById(email)
+        return dtos
+    }
+
 }

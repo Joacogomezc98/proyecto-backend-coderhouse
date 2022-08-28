@@ -16,6 +16,7 @@ import { authRouter } from "./routes/auth.js";
 import { logger } from "./helpers/log4js.js";
 import { Server as IOServer } from 'socket.io'
 import { getMessages, saveMessage } from "./controllers/messages.js";
+import { chatRouter } from "./routes/chat.js";
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -90,7 +91,10 @@ app.use('/api/carrito', cartRouter)
 
 app.use('/api/productos', productsRouter)
 
+app.use('/api/chat', chatRouter)
+
 app.use('/', authRouter)
+
 
 
 if (MODE === 'CLUSTER' && cluster.isPrimary) {

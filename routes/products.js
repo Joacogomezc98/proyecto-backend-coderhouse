@@ -10,10 +10,10 @@ productsRouter.get('/', isAuth, allProducts)
 
 //DEVOLVER PRODUCTOS SEGUN SU CATEGORIA
 
-productsRouter.get('/category/:categoria', filterProducts)
+productsRouter.get('/category/:categoria', isAuth ,filterProducts)
 
 // DEVOLVER PROD SEGUN ID
-productsRouter.get('/:id', productById)
+productsRouter.get('/:id', isAuth ,productById)
 
 // RECIBE Y AGREGA UN PRODUCTO, LO DEVUELVE CON SU ID ASIGNADO
 productsRouter.post('/',addProduct)

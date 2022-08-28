@@ -28,3 +28,9 @@
     at cartInfoMail (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/helpers/nodemailer.js:40:40)
     at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:53:42
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-08-27T19:31:34.588] [ERROR] file - User not found
+[2022-08-27T19:31:34.600] [ERROR] file - Login error!
+[2022-08-27T19:58:53.625] [ERROR] file - User not found
+[2022-08-27T19:58:53.636] [ERROR] file - Login error!
+[2022-08-27T19:59:03.896] [ERROR] file - Invalid Password
+[2022-08-27T19:59:03.967] [ERROR] file - Login error!
