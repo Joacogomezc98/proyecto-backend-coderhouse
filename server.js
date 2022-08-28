@@ -17,6 +17,9 @@ import { logger } from "./helpers/log4js.js";
 import { Server as IOServer } from 'socket.io'
 import { getMessages, saveMessage } from "./controllers/messages.js";
 import { chatRouter } from "./routes/chat.js";
+import swaggerUi from 'swagger-ui-express'
+import swaggerJsdoc from 'swagger-jsdoc'
+
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -65,7 +68,6 @@ app.engine("hbs", handlebars.engine({
 app.set("view engine", "hbs")
 app.set("views", "./views")
 
-//--------------------------------------------------------------------------------------------------------------------
 // SOCKETS CONFIG SECTION ------------------------------------------
 
 const httpServer = new HttpServer(app)
@@ -80,7 +82,30 @@ io.on("connection", (socket) => {
         saveMessage(io, data)
     })
 })
-// VARIABLES SERVIDOR
+
+// SWAGGER CONFIGURATION ------------------------------------------------
+
+const options = {
+    definition: {
+      openapi: "3.0.0",
+      info: {
+        title: "E-DRINK API",
+        description:
+          "A simple e-commmerce application for your favourite drinks!",
+      },
+      servers: [
+        {
+          url: "http://localhost:8080",
+        },
+      ],
+    },
+    apis: ["./routes/*.js"],
+  };
+
+  const specs = swaggerJsdoc(options);
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+
+// VARIABLES SERVIDOR ----------------------------------------------------
 
 
 const PORT = configs.port

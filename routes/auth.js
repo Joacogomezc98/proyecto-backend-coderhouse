@@ -8,29 +8,93 @@ const { Router } = express
 
 export const authRouter = Router()
 
-// RENDER DE VISTA DE LOGIN
+/**
+ * @swagger
+ * /login:
+ *  get:
+ *      summary: Render vista login
+ *      tags: [Auth]
+ *      responses:
+ *          200:
+ *              description: Vista login
+ */
 authRouter.get("/login",loginRender)
 
-//LOGGUEA AL USUARIO Y REDIRIGE A / SI ES CORRECTO O A /LOGIN-ERROR SI FALLA EL LOGUEO
+/**
+ * @swagger
+ * /login:
+ *  post:
+ *      summary: Loguea al usuario y redirige a / si es correcto o a /login-error si falla
+ *      tags: [Auth]
+ *      responses:
+ *          200:
+ *              description: redirect
+ */
 authRouter.post('/login',  passport.authenticate('local',
 {
     successRedirect: '/',
     failureRedirect: '/login-error'
 }))
 
-// RENDER VISTA ERROR DE LOGUEO
+/**
+ * @swagger
+ * /login-error:
+ *  get:
+ *      summary: Render vista error de logueo
+ *      tags: [Auth]
+ *      responses:
+ *          200:
+ *              description: Vista error de logueo
+ */
 authRouter.get('/login-error', loginError)
 
-//RENDER VISTA DE REGISTRO
+/**
+ * @swagger
+ * /register:
+ *  get:
+ *      summary: Render vista registro
+ *      tags: [Auth]
+ *      responses:
+ *          200:
+ *              description: Vista registro
+ */
 authRouter.get('/register', renderRegister)
 
-// REGISTRA AL USUARIO
+/**
+ * @swagger
+ * /register:
+ *  post:
+ *      summary: Registro de usuario
+ *      tags: [Auth]
+ *      responses:
+ *          200:
+ *              description: Usuario registrado
+ */
 authRouter.post('/register', registerUser);
 
-//RENDER VISTA USUARIO Y DESLOGUEO
+/**
+ * @swagger
+ * /register:
+ *  get:
+ *      summary: Desloguea al usuario terminando la sesion
+ *      tags: [Auth]
+ *      responses:
+ *          200:
+ *              description: Vista logout
+ */
 authRouter.get('/logout', logout)
 
-// LANDING PAGE
+
+/**
+ * @swagger
+ * /:
+ *  get:
+ *      summary: Vista principal de la api
+ *      tags: [Auth]
+ *      responses:
+ *          200:
+ *              description: Vista landing
+ */
 authRouter.get('/', isAuth, renderLanding)
 
 // ***NOTA***

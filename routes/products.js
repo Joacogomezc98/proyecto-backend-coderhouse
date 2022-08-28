@@ -5,21 +5,182 @@ import { isAuth } from "../middlewares/authValidation.js";
 const { Router } = express
 export const productsRouter = Router()
 
-// DEVOLVER TODOS LOS PRODS
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      Productos:
+ *          type: object
+ *          properties:
+ *              title:
+ *                  type: string
+ *                  description: Titulo del producto
+ *              price:
+ *                  type: integer
+ *                  description: Precio de mercado del producto
+ *              stock:
+ *                  type: integer
+ *                  description: Cantidad de stock del producto
+ *              thumbnail:
+ *                  type: string
+ *                  description: url de la imagen del producto
+ *              timestamp:
+ *                  type: date
+ *                  description: Fecha de creacion del producto
+ *              category:
+ *                  type: string
+ *                  description: Categoria del producto
+ *          required:
+ *              - title
+ *              - price
+ *              - stock
+ *              - thumbnail
+ *              - timestamp
+ *              - category
+ *          example:
+ *              title: SMIRNOFF ICE APPLE 473ml
+ *              price: 200
+ *              stock: 100
+ *              thumbnail: http://www.puroescabio.com.ar/web/image/product.template/74947/image_256/%5B4860%5D%20SMIRNOFF%20ICE%20473ml?unique=1e17d14
+ *              timestamp: 2022-07-27T04:31:54.134+00:00
+ *              category: VODKA     
+ */
+
+// ROUTES --------------------------------------------------------------------------------------------------
+
+/**
+ * @swagger
+ * /api/productos/:
+ *  get:
+ *      summary: Muestra todos los productos de la DB
+ *      tags: [Producto]
+ *      responses:
+ *          200:
+ *              description: Devuelve el listado de productos
+ */
 productsRouter.get('/', isAuth, allProducts)
 
-//DEVOLVER PRODUCTOS SEGUN SU CATEGORIA
+/**
+ * @swagger
+ * /api/productos/category/:categoria:
+ *  get:
+ *      summary: Muestra todos los productos de la categoria definida
+ *      parameters:
+ *          - in: path
+ *            required: true
+ *            name: categoria
+ *            schema:
+ *              type: string
+ *      tags: [Producto]
+ *      responses:
+ *          200:
+ *              description: Devuelve el listado de productos
+ */
+productsRouter.get('/category/:categoria', isAuth, filterProducts)
 
-productsRouter.get('/category/:categoria', isAuth ,filterProducts)
+/**
+ * @swagger
+ * /api/productos/:id:
+ *  get:
+ *      summary: Busca un producto por su ID
+ *      parameters:
+ *          - in: path
+ *            required: true
+ *            name: id
+ *            schema:
+ *              type: string
+ *      tags: [Producto]
+ *      responses:
+ *          200:
+ *              description: Devuelve el producto
+ */
+productsRouter.get('/:id', isAuth, productById)
 
-// DEVOLVER PROD SEGUN ID
-productsRouter.get('/:id', isAuth ,productById)
+/**
+ * @swagger
+ * /api/productos/:
+ *  post:
+ *      summary: recibe y agrega un producto
+ *      tags: [Producto]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      example:
+ *                          title: SMIRNOFF ICE APPLE 473ml
+ *                          price: 200
+ *                          stock: 100
+ *                          thumbnail: http://www.puroescabio.com.ar/web/image/product.template/74947/image_256/%5B4860%5D%20SMIRNOFF%20ICE%20473ml?unique=1e17d14
+ *                          timestamp: 2022-07-27T04:31:54.134+00:00
+ *                          category: VODKA
+ *                          admin: true
+ *      responses:
+ *          200:
+ *              description: Se devuelve el nuevo producto
+ */
 
-// RECIBE Y AGREGA UN PRODUCTO, LO DEVUELVE CON SU ID ASIGNADO
-productsRouter.post('/',addProduct)
+productsRouter.post('/', addProduct)
 
-// RECIBE Y ACTUALIZA UN PRODUCTO SEGUN SU ID
-productsRouter.put('/:id',upadteProduct)
+/**
+ * @swagger
+ * /api/productos/:id:
+ *  put:
+ *      summary: Edita un producto
+ *      tags: [Producto]
+ *      parameters:
+ *          - in: path
+ *            required: true
+ *            name: id
+ *            schema:
+ *              type: string
+ *            example:
+ *              62e0bfba1ab86f90a7d68834
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      example:
+ *                          title: SMIRNOFF ICE APPLE 473ml
+ *                          price: 300
+ *                          stock: 200
+ *                          thumbnail: http://www.puroescabio.com.ar/web/image/product.template/74947/image_256/%5B4860%5D%20SMIRNOFF%20ICE%20473ml?unique=1e17d14
+ *                          timestamp: 2022-07-27T04:31:54.134+00:00
+ *                          category: VODKA
+ *                          admin: true
+ *      responses:
+ *          200:
+ *              description: Se devuelve el producto modificado
+ */
+productsRouter.put('/:id', upadteProduct)
 
-// ELIMINA UN PRODUCTO SEGUN SU ID
+/**
+ * @swagger
+ * /api/productos/:id:
+ *  delete:
+ *      summary: Elimina un producto
+ *      tags: [Producto]
+ *      parameters:
+ *          - in: path
+ *            required: true
+ *            name: id
+ *            schema:
+ *              type: string
+ *            example:
+ *              62e0bfba1ab86f90a7d68834
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      example:
+ *                          admin: true
+ *      responses:
+ *          200:
+ *              description: Mensaje de validacions
+ */
 productsRouter.delete('/:id', deleteProduct)
