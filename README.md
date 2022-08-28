@@ -6,6 +6,6 @@ Bienvenido a E-DRINK!
 
 Toda la documentacion se podra encontrar en '/api-docs' :)
 
-## POSTMAN COLLECTION
+## Postman collection
 
 Se podra encontrar la coleccion completa de postman para testear en el archivo collection.json dentro de la carpeta postman
