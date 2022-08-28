@@ -1,5 +1,6 @@
 import { ordersApi } from "../daos/index.js"
 
+// CREA UNA NUEVA ORDEN Y LA GUARDA EN LA DB
 export const createOrder = async (cart, email ) => {
 
     const totalOrders = await ordersApi.getAll()

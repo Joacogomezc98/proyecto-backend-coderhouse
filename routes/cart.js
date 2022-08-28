@@ -18,9 +18,7 @@ cartRouter.get("/:id/productos", isAuth, listCart)
 cartRouter.post('/checkout/:id', checkoutCart)
 
 //AGREGAR UN PRODUCTO AL CARRITO POR SU ID
-
 cartRouter.post("/:id/productos", addToCart)
 
 // ELIMINAR UN PRODUCTO DEL CARRITO POR SU ID DE CARRITO Y DE PRODUCTO
-
 cartRouter.delete("/:id/productos/:id_prod", deleteFromCart)

@@ -7,7 +7,8 @@ class ProductosMongo extends ContenedorMongo {
     constructor() {
         super('productos', ProductosSchema)
     }
-
+    
+    // CREA UNA INSTANCIA DE PRODUCTOS
     static getInstance() {
         if (!instance) {
             instance = new ProductosMongo()
@@ -15,6 +16,7 @@ class ProductosMongo extends ContenedorMongo {
         return instance
     }
 
+    // MODIFICA EL PRODUCTO
     async modifyProduct(modProduct, id) {
         try {
             await this.collection.updateOne({ "_id": mongoose.Types.ObjectId(id) }, {
@@ -31,6 +33,7 @@ class ProductosMongo extends ContenedorMongo {
         }
     }
 
+    // TRAE LOS PRODUCTOS FILTRADOS POR CATEGORIA
     async getByCategory(category) {
         try {
             const item = await this.collection.find({ 'category': category })

@@ -1,10 +1,12 @@
 import { productosApi } from "../daos/index.js";
 
+// TRAE TODOS LOS PRODUCTOS DE LA DB
 export const allProducts = (req, res) => {
     productosApi.getAll()
     .then(data => res.send(data))
 }
 
+// TRAE EL PRODUCTO SOLICITADO POR ID
 export const productById = (req, res) => {
     const id = req.params.id
 
@@ -17,6 +19,7 @@ export const productById = (req, res) => {
         )
 }
 
+// CREA EL PRODUCTO REQUERIDO
 export const addProduct = (req, res) => {
     const newProduct = req.body
     newProduct.timestamp = new Date()
@@ -32,6 +35,7 @@ export const addProduct = (req, res) => {
     }
 }
 
+// ACTUALIZA EL PRODUCTO REEMPLAZANDOLO POR EL PRODUCTO ENVIADO POR BODY
 export const upadteProduct = (req, res) => {
     const modProduct = req.body
 
@@ -51,6 +55,7 @@ export const upadteProduct = (req, res) => {
     }
 }
 
+// ELIMINA EL PRODUCTO SOLICITADO
 export const deleteProduct = (req, res) => {
     const administrador = req.body.admin
 
@@ -73,6 +78,7 @@ export const deleteProduct = (req, res) => {
     }
 }
 
+// TRAE LOS PRODUCTOS QUE ESTEN DENTRO DE LA CATEGORIA INDICADA POR LA RUTA
 export const filterProducts = (req, res) => {
     const category = req.params.categoria
 

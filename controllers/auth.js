@@ -4,20 +4,25 @@ import { loggerFile } from "../helpers/log4js.js";
 import { mailTransporter, newUserMail } from "../helpers/nodemailer.js";
 import { createHash } from "../middlewares/authValidation.js";
 
+// RENDERIZA LA VISTA DE LOGIN
 export const loginRender = (req, res) => {
     res.render('login')
 }
 
+// SI HAY UN ERROR EN EL LOGGEO MUESTRA LA PANTALLA DE ERROR DE LOGIN
 export const loginError = (req, res) => {
     loggerFile.error("Login error!");
     logger.error("Login error!");
     res.render('login-error');
 }
 
+// MUESTRA LA PANTALLA DE REGISTRO DE NUEVO USUARIO
 export const renderRegister = (req, res) => {
     res.render('register');
 }
 
+// FUNCION QUE SE EJECUTA AL SUBIR EL FORMULARIO DE REGISTRO. DE HABER UN ERROR MUESTRA LA PANTALLA DE ERROR
+// DE NO HABERLO REDIRECCIONA AL LOGIN HABIENDO GUARDADO EL NUEVO USUARIO
 export const registerUser = async (req, res) => {
     const { email, password, nombre, direccion, edad, telefono, imagen } = req.body;
 
@@ -50,6 +55,7 @@ export const registerUser = async (req, res) => {
     }
 }
 
+// TERMINA LA SESION
 export const logout = (req, res) => {
     res.render('logout', { user: req.user.username })
     logger.info("success!");
@@ -62,10 +68,12 @@ export const logout = (req, res) => {
     })
 }
 
+// RENDERIZA LA VISTA MAIN
 export const renderLanding =(req, res) => {
     res.render('main', { user: req.user.username })
 }
 
+// SI EL USUARIO VA A UNA RUTA EN LA CUAL NO HAY NADA IMPLEMENTADO SE MUESTRA UN ERROR EN PANTALLA
 export const notImplemented = (req, res) => {
     res.send({
         error: "Route not implemented"

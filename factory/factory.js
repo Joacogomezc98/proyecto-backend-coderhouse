@@ -7,13 +7,14 @@ import OrdersRepo from "../repositories/ordersRepo.js";
 let instance = null
 export default class Factory {
 
+    // CREA INSTANCIAD E LA FACTORY
     static getInstance() {
         if (!instance) {
             instance = new Factory()
         }
         return instance
     }
-
+    // CREA UNA INSTQANCIA DE LA COLECCION SOLICITADA
     create(db, name) {
         switch (name) {
             case 'Productos':

@@ -7,6 +7,7 @@ class UsersMongo extends ContenedorMongo {
         super('users', UserSchema)
     }
 
+    // CREA UNA INSTANCIA DE USUARIOS
     static getInstance(){
         if(!instance){
             instance = new UsersMongo()
@@ -14,7 +15,7 @@ class UsersMongo extends ContenedorMongo {
         return instance
      }
 
-
+    // TRAE UN USUARIO POR SU NOMBRE
     async getByName(nombre) {
         try {
             const item = await this.collection.findOne({ 'username': nombre })

@@ -1,5 +1,6 @@
 import log4js from 'log4js'
 
+// CONFIGURACION PARA LOGS
 log4js.configure({
     appenders: {
         // defino dos soportes de salida de datos

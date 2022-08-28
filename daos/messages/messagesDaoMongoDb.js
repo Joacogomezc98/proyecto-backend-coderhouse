@@ -6,14 +6,14 @@ class MessagesMongo extends ContenedorMongo {
     constructor() {
         super('messages', messagesSchema)
     }
-
+    // CREA UNA INSTANCIA DE MENSAJES
     static getInstance(){
         if(!instance){
             instance = new MessagesMongo()
         }
         return instance
     }
-
+    // TRAE LOS MENSAJES GENERADOS POR CIERTO USUARIO POR EMAIL
     async getMessagesById(email){
         try{
             const messages = await this.collection.find({"author.email": email})

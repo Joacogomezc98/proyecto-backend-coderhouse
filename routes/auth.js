@@ -8,20 +8,26 @@ const { Router } = express
 
 export const authRouter = Router()
 
+// RENDER DE VISTA DE LOGIN
 authRouter.get("/login",loginRender)
 
+//LOGGUEA AL USUARIO Y REDIRIGE A / SI ES CORRECTO O A /LOGIN-ERROR SI FALLA EL LOGUEO
 authRouter.post('/login',  passport.authenticate('local',
 {
     successRedirect: '/',
     failureRedirect: '/login-error'
 }))
 
+// RENDER VISTA ERROR DE LOGUEO
 authRouter.get('/login-error', loginError)
 
+//RENDER VISTA DE REGISTRO
 authRouter.get('/register', renderRegister)
 
+// REGISTRA AL USUARIO
 authRouter.post('/register', registerUser);
 
+//RENDER VISTA USUARIO Y DESLOGUEO
 authRouter.get('/logout', logout)
 
 // LANDING PAGE
@@ -36,5 +42,5 @@ authRouter.get('/', isAuth, renderLanding)
 // })
 
 
-// ANY OTHER ROUTE
+// CUALQUIER OTRA RUTA NO IMPLEMENTADA MUESTRA UN MENSAJE DE ERROR
 authRouter.get('*', notImplemented)

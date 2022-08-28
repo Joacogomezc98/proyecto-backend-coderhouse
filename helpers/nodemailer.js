@@ -2,8 +2,10 @@ import { createTransport } from "nodemailer";
 
 // NODEMAILER CONFIGURATION --------------------------------------------------------------------------------
 
-const TEST_MAIL = 'joacogomezc@gmail.com'
+// SE DEFINE EL MAIL DONDE VAN A LLEGAR LAS NOTIFICACIONES
+const TEST_MAIL = process.env.ADMIN_EMAIL
 
+// CONFIGURACION PARA NODEMAILER
 export const mailTransporter = createTransport({
     service: 'gmail',
     port: 587,
@@ -13,7 +15,7 @@ export const mailTransporter = createTransport({
     },
 });
 
-
+// PARAMETROS PARA NOTIFICACION DE NUEVO USUARIO
 export const newUserMail = (data) => (
     {
         from: TEST_MAIL,
@@ -32,6 +34,7 @@ export const newUserMail = (data) => (
     }
 )
 
+// PARAMETROS PARA NOTIFICACION DE COMPRA DE UN CARRITO
 export const cartInfoMail = (data) => (
     {
         from: TEST_MAIL,

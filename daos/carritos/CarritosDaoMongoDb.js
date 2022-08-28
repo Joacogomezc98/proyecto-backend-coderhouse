@@ -7,6 +7,7 @@ class CarritosMongo extends ContenedorMongo {
         super("carritos", CarritosSchema)
      }
 
+     //AGREGA UN PRODUCTO AL CARRITO
      async addProduct(id, product){
          try{
              const updatedCart =  await this.collection.findOneAndUpdate({"_id": id},{$push: {"products": product}})
@@ -16,6 +17,7 @@ class CarritosMongo extends ContenedorMongo {
          }
      }
 
+     //CREA UNA INSTANCIA DE CARRITO
      static getInstance(){
         if(!instance){
             instance = new CarritosMongo()
@@ -23,7 +25,7 @@ class CarritosMongo extends ContenedorMongo {
         return instance
      }
 
-
+     //ELIMINA UN PRODUCTO DEL CARRITO
      async deleteProduct(cartID, prodID){
          try{
              const deletedCart = await this.collection.findOneAndUpdate({"_id": cartID},{$pull: {"products":{"_id": prodID}}})

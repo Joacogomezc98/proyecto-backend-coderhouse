@@ -11,6 +11,7 @@ const LocalStrategy = Strategy
 
 export var loggedUser = {}
 
+// ESTRATEGIA LOCAL PARA LOGIN
 passport.use(new LocalStrategy(
     async (username, password, done) => {
         //Logica para validar si un usuario existe
@@ -34,16 +35,19 @@ passport.use(new LocalStrategy(
     }
 ))
 
+// ENCRIPTACION DE PASSWORD
 passport.serializeUser((usuario, done) => {
     done(null, usuario.username);
 })
 
+//DESENCRIPTACION DE PASSWORD
 passport.deserializeUser((nombre, done) => {
     usersApi.getByName(nombre)
         .then((data) => done(null, data));
 
 });
 
+// FUNCION DE VALIDACION. SI ES CUMPLIDA REDIRIGE A LANDING SINO A PANTALLA DE ERROR
 export const passportAuth = () => (
     passport.authenticate('local',
     {
@@ -52,7 +56,7 @@ export const passportAuth = () => (
     })
 )
 
-
+// SE CREA EL HASH PARA LA CONTRASEÑA
 export const createHash = async (password) => {
     const saltRouds = 10
 
@@ -66,6 +70,7 @@ export const createHash = async (password) => {
     }
 }
 
+// VERIFICO SI LA CONTRASEÑA INGRESADA ES LA MISMA QUE LA DE LA BASE DE DATOS
 const verifyPass = async (usuario, password) => {
 
     const match = await bcrypt.compare(password, usuario.password)
@@ -73,6 +78,7 @@ const verifyPass = async (usuario, password) => {
 
 }
 
+// MIDDLEWARE DE VALIDACION POR USER Y PASS. EN CASO DE QUE NO ESTE VALIDADO REDIRECCIONA A /LOGIN
 export const isAuth = (req, res, next) => {
     if (req.isAuthenticated()) {
         next()
