@@ -17,6 +17,7 @@ export const authRouter = Router()
  *      responses:
  *          200:
  *              description: Vista login
+ * 
  */
 authRouter.get("/login",loginRender)
 
@@ -29,6 +30,8 @@ authRouter.get("/login",loginRender)
  *      responses:
  *          200:
  *              description: redirect
+ *          500:
+ *              description: login error
  */
 authRouter.post('/login',  passport.authenticate('local',
 {
@@ -69,6 +72,8 @@ authRouter.get('/register', renderRegister)
  *      responses:
  *          200:
  *              description: Usuario registrado
+ *          500:
+ *              description: register error
  */
 authRouter.post('/register', registerUser);
 
@@ -106,5 +111,14 @@ authRouter.get('/', isAuth, renderLanding)
 // })
 
 
-// CUALQUIER OTRA RUTA NO IMPLEMENTADA MUESTRA UN MENSAJE DE ERROR
+/**
+ * @swagger
+ * /*:
+ *  get:
+ *      summary: Rutas no implementadas
+ *      tags: [Auth]
+ *      responses:
+ *          501:
+ *              description: Ruta no implementada
+ */
 authRouter.get('*', notImplemented)

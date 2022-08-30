@@ -44,6 +44,8 @@ export const cartRouter = Router()
  *      responses:
  *          200:
  *              description: Devuelve el ID del nuevo carrito
+ *          500:
+ *              description: Server error
  */
 cartRouter.post('/', createCart)
 
@@ -64,6 +66,8 @@ cartRouter.post('/', createCart)
  *      responses:
  *          200:
  *              description: Mensaje de validacions
+ *          404:
+ *              description: Cart not found
  */
 cartRouter.delete('/:id', emptyCart )
 
@@ -84,6 +88,8 @@ cartRouter.delete('/:id', emptyCart )
  *      responses:
  *          200:
  *              description: Devuelve el listado de productos del carrito
+ *          404:
+ *              description: No products found
  */
 cartRouter.get("/:id/productos", isAuth, listCart)
 
@@ -104,6 +110,8 @@ cartRouter.get("/:id/productos", isAuth, listCart)
  *      responses:
  *          200:
  *              description: Mensaje de confirmacion
+ *          404:
+ *              description: Cart not found
  */
 cartRouter.post('/checkout/:id' ,checkoutCart)
 
@@ -124,6 +132,10 @@ cartRouter.post('/checkout/:id' ,checkoutCart)
  *      responses:
  *          200:
  *              description: Muestra el carrito con el nuevo producto
+ *          404:
+ *              description: Cart not found
+ *          404:
+ *              descripcion: Product not found
  */
 cartRouter.post("/:id/productos", addToCart)
 
@@ -151,5 +163,7 @@ cartRouter.post("/:id/productos", addToCart)
  *      responses:
  *          200:
  *              description: Mensaje de validacion
+ *          404:
+ *              description: Not found
  */
 cartRouter.delete("/:id/productos/:id_prod", deleteFromCart)

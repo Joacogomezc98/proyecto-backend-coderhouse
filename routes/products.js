@@ -57,6 +57,8 @@ export const productsRouter = Router()
  *      responses:
  *          200:
  *              description: Devuelve el listado de productos
+ *          500:
+ *              description: Server error
  */
 productsRouter.get('/', isAuth, allProducts)
 
@@ -75,6 +77,10 @@ productsRouter.get('/', isAuth, allProducts)
  *      responses:
  *          200:
  *              description: Devuelve el listado de productos
+ *          404:
+ *              description: No products for this category
+ *          500:
+ *              description: Sever error
  */
 productsRouter.get('/category/:categoria', isAuth, filterProducts)
 
@@ -93,6 +99,8 @@ productsRouter.get('/category/:categoria', isAuth, filterProducts)
  *      responses:
  *          200:
  *              description: Devuelve el producto
+ *          404:
+ *              description: Product not found
  */
 productsRouter.get('/:id', isAuth, productById)
 
@@ -119,6 +127,10 @@ productsRouter.get('/:id', isAuth, productById)
  *      responses:
  *          200:
  *              description: Se devuelve el nuevo producto
+ *          500:
+ *              description: Server error
+ *          401:
+ *              description: Request not authorized
  */
 
 productsRouter.post('/', addProduct)
@@ -154,6 +166,10 @@ productsRouter.post('/', addProduct)
  *      responses:
  *          200:
  *              description: Se devuelve el producto modificado
+ *          401:
+ *              description: Request not authorized
+ *          500:
+ *              description: Server error
  */
 productsRouter.put('/:id', upadteProduct)
 
@@ -182,5 +198,9 @@ productsRouter.put('/:id', upadteProduct)
  *      responses:
  *          200:
  *              description: Mensaje de validacions
+ *          401:
+ *              description: Request not authorized
+ *          404:
+ *              description: Product not found
  */
 productsRouter.delete('/:id', deleteProduct)
