@@ -14,7 +14,8 @@ export const createCart = (req, res) => {
     }
 
     carritoApi.create(newCart)
-        .then(savedCart => res.send(`Your cart ID: ${savedCart.id}`))
+        .then(savedCart => res.status(200).send(`Your cart ID: ${savedCart.id}`))
+        .catch(() => res.status(500).send('Internal server error'))
 }
 
 // VACIA UN CARRITO Y LO ELIMINA
@@ -24,9 +25,9 @@ export const emptyCart = (req, res) => {
     carritoApi.deleteById(id)
         .then(deletedCart => {
             if (deletedCart) {
-                res.send("The cart has been deleted")
+                res.status(200).send("The cart has been deleted")
             } else {
-                res.send({ error: "Cart was not found!" })
+                res.status(404).send({ error: "Cart was not found!" })
             }
         })
 }
@@ -36,12 +37,11 @@ export const listCart = (req, res) => {
     const id = req.params.id
 
     carritoApi.getById(id)
-        .then(cart => res.send(cart.products))
-        .catch(err => res.send(err))
+        .then(cart => res.status(200).send(cart.products))
+        .catch(() => res.status(404).send({error: 'No products found'}))
 }
 
 //ENVIAR EL CONTENDIO DEL CARRITO POR MAIL Y WHATSAPP
-//TODO: Agregar validacion
 export const checkoutCart = (req, res) => {
     const id = req.params.id
     const username = loggedUser.name
@@ -49,17 +49,21 @@ export const checkoutCart = (req, res) => {
 
     carritoApi.getById(id)
         .then((cart) => {
-            try {
-                mailTransporter.sendMail(cartInfoMail({ email, username, cart }))
-                whatsappMessage({email, username, cart})
-                createOrder(cart, email)
-            } catch (err) {
-                logger.error(err)
-                loggerFile.error(err)
+            if(cart){
+                try {
+                    mailTransporter.sendMail(cartInfoMail({ email, username, cart }))
+                    whatsappMessage({email, username, cart})
+                    createOrder(cart, email)
+                    carritoApi.deleteById(id)
+                    res.status(200).send('Cart checked out')
+                } catch (err) {
+                    logger.error(err)
+                    loggerFile.error(err)
+                }
+            }else{
+                res.status(404).send({error: 'Cart not found'})
             }
         })
-        .then(() => res.send('Cart checked out'))
-        .then(() => carritoApi.deleteById(id))
 }
 
 //AGREGA UN PRODUCTO AL CARRITO POR ID
@@ -71,10 +75,10 @@ export const addToCart = (req, res) => {
     productosApi.getById(prodID)
         .then((product) => {
             carritoApi.addProduct(id, product)
-                .then(() => res.send("Product added"))
-                .catch((e) => res.send(e))
+                .then(() => res.status(200).send("Product added"))
+                .catch(() => res.status(404).send({error: "Cart not found"}))
         })
-        .catch((e) => res.send(e))
+        .catch(() => res.status(404).send({error: "Product not found"}))
 }
 
 // ELIMINAR UN PRODUCTO DEL CARRITO POR SU ID DE CARRITO Y DE PRODUCTO
@@ -84,6 +88,6 @@ export const deleteFromCart = (req, res) => {
 
     carritoApi.deleteProduct(cartID, prodID)
 
-        .then(cart => res.send(`${cart} has been deleted from the cart`))
-        .catch(resp => res.send(resp))
+        .then(cart => res.status(200).send(`${cart} has been deleted from the cart`))
+        .catch(() => res.status(404).send({errro: 'Not found'}))
 }

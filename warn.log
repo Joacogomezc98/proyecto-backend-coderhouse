@@ -44,3 +44,13 @@
     at cartInfoMail (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/helpers/nodemailer.js:43:40)
     at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:55:42
     at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[2022-08-29T22:34:31.588] [ERROR] file - TypeError: Cannot read properties of null (reading '_id')
+    at cartInfoMail (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/helpers/nodemailer.js:43:40)
+    at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:53:42
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-08-29T22:35:51.201] [ERROR] file - TypeError: Cannot read properties of null (reading '_id')
+    at cartInfoMail (file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/helpers/nodemailer.js:43:40)
+    at file:///Users/joaquingc/Documents/Coderhouse/proyecto-backend-coderhouse/controllers/cart.js:54:42
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-08-29T23:03:08.482] [ERROR] file - User not found
+[2022-08-29T23:03:08.492] [ERROR] file - Login error!

@@ -57,7 +57,7 @@ export default class ContenedorMongo {
             const newItem = await this.collection.create(item)
             return newItem
         }catch(e){
-            throw new Error(`Error saving: ${e}`)
+            throw new Error(`Error creating: ${e}`)
         }
     }
 

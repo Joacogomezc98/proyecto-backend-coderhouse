@@ -6,8 +6,6 @@ admin.initializeApp({
   databaseURL: "https://e-drink-backend.firebaseio.com"
 })
 
-console.log("base de datos conectada")
-
 export default class ContenedorFirebase {
   constructor(collection) {
     this.db = admin.firestore()

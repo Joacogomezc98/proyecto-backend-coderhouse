@@ -15,7 +15,7 @@ class CarritosMongo extends ContenedorMongo {
              const updatedCart =  await this.collection.findOneAndUpdate({"_id": id},{$push: {"products": product}})
              return updatedCart
          }catch(e){
-             console.log(e)
+             throw new Error(e)
          }
      }
 
@@ -33,8 +33,7 @@ class CarritosMongo extends ContenedorMongo {
              const deletedCart = await this.collection.findOneAndUpdate({"_id": cartID},{$pull: {products:{"_id": mongoose.Types.ObjectId(prodID)}}},{ safe: true, multi: false })
              return deletedCart
          }catch(e){
-             console.log(e)
-             return ("Something Went Wrong")
+             throw new Error(e)
          }
      }
 

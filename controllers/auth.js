@@ -6,19 +6,19 @@ import { createHash } from "../middlewares/authValidation.js";
 
 // RENDERIZA LA VISTA DE LOGIN
 export const loginRender = (req, res) => {
-    res.render('login')
+    res.status(200).render('login')
 }
 
 // SI HAY UN ERROR EN EL LOGGEO MUESTRA LA PANTALLA DE ERROR DE LOGIN
 export const loginError = (req, res) => {
     loggerFile.error("Login error!");
     logger.error("Login error!");
-    res.render('login-error');
+    res.status(500).render('login-error');
 }
 
 // MUESTRA LA PANTALLA DE REGISTRO DE NUEVO USUARIO
 export const renderRegister = (req, res) => {
-    res.render('register');
+    res.status(200).render('register');
 }
 
 // FUNCION QUE SE EJECUTA AL SUBIR EL FORMULARIO DE REGISTRO. DE HABER UN ERROR MUESTRA LA PANTALLA DE ERROR
@@ -29,7 +29,7 @@ export const registerUser = async (req, res) => {
     const newUsuario = await usersApi.getByName(email)
         .then((data) => { return data });
     if (newUsuario) {
-        res.render('register-error')
+        res.status(500).render('register-error')
         logger.error(`${newUsuario} already exists as a user`);
         loggerFile.error(`${newUsuario} already exists as a user`);
     } else {
@@ -51,13 +51,13 @@ export const registerUser = async (req, res) => {
             loggerFile.error(err)
         }
         logger.info("success!");
-        res.redirect('/login')
+        res.status(200).redirect('/login')
     }
 }
 
 // TERMINA LA SESION
 export const logout = (req, res) => {
-    res.render('logout', { user: req.user.username })
+    res.status(200).render('logout', { user: req.user.username })
     logger.info("success!");
     req.session.destroy(err => {
         if (err) {
@@ -70,12 +70,12 @@ export const logout = (req, res) => {
 
 // RENDERIZA LA VISTA MAIN
 export const renderLanding =(req, res) => {
-    res.render('main', { user: req.user.username })
+    res.status(200).render('main', { user: req.user.username })
 }
 
 // SI EL USUARIO VA A UNA RUTA EN LA CUAL NO HAY NADA IMPLEMENTADO SE MUESTRA UN ERROR EN PANTALLA
 export const notImplemented = (req, res) => {
-    res.send({
+    res.status(501).send({
         error: "Route not implemented"
     })
 }
