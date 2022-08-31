@@ -133,9 +133,8 @@ cartRouter.post('/checkout/:id' ,checkoutCart)
  *          200:
  *              description: Muestra el carrito con el nuevo producto
  *          404:
- *              description: Cart not found
- *          404:
- *              descripcion: Product not found
+ *              description: Cart/Product∫ not found
+ * 
  */
 cartRouter.post("/:id/productos", addToCart)
 
