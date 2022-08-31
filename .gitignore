@@ -1,4 +1,4 @@
 /node_modules
 .env
-/error.log
-/warn.log
+error.log
+warn.log
