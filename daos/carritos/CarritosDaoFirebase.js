@@ -1,5 +1,6 @@
 import ContenedorFirebase from  "../../contenedores/contenedorFirebase.js"
 import {FieldValue} from 'firebase-admin/firestore'
+// DEPRECADO -------------------------
 
 let instance = null
 class CarritosFirebase extends ContenedorFirebase {

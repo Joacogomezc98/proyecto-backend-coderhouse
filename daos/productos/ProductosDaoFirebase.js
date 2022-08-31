@@ -1,4 +1,5 @@
 import ContenedorFirebase from "../../contenedores/contenedorFirebase.js"
+// DEPRECADO -------------------------
 
 let instance = null
 class ProductosFirebase extends ContenedorFirebase {

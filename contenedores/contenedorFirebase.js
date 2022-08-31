@@ -1,6 +1,7 @@
 import admin from "firebase-admin"
 import configs from "../configs.js"
 
+// DEPRECADO -------------------------
 admin.initializeApp({
   credential: admin.credential.cert(configs.firestore),
   databaseURL: "https://e-drink-backend.firebaseio.com"
